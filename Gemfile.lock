@@ -39,6 +39,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     diff-lcs (1.2.5)
+    elo (0.1.0)
     erubis (2.7.0)
     execjs (2.2.1)
     haml (4.0.5)
@@ -136,6 +137,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   coffee-rails (~> 4.0.0)
+  elo
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

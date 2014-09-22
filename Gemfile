@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "haml-rails" 
 gem 'spring',        group: :development
 gem 'autoprefixer-rails'
+gem 'elo'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
