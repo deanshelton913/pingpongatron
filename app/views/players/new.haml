@@ -1,7 +1,7 @@
 = content_for(:head){ javascript_tag 'image_capture' }
 = content_for(:head) { stylesheet_link_tag 'players' }
 %h2
-  Sign-up for Ping-Pong-a-tron
+  Sign-up
 = form_for @player, url: { action: "create" } do |f|
   = link_to "Login", login_path, class: 'login'
   = f.text_field :name, placeholder: "Your Name"

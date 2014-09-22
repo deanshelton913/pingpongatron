@@ -7,6 +7,8 @@ class PlayersController < ApplicationController
   def create
     player = Player.new(player_params) 
     player.save
+    session[:id] = player.id
+    redirect_to new_game_path
   end
 
   def player_params
