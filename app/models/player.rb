@@ -1,6 +1,7 @@
 require 'elo'
 
 class Player < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
   
   def a_game
     arel_relation Game

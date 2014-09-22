@@ -1,0 +1,51 @@
+body{
+  background-color: aqua;
+}
+h2{
+  font-family: arial;
+  color: #fff;
+  padding: 10px;
+  background-color: aquamarine;
+  font-size: 2em;
+}
+
+form{
+  position:relative;
+  margin:0 auto;
+  width:98%;
+  padding:10px 0;
+  input{
+    float: right;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: 0;
+    padding-left: 0;
+    &#player_name{
+      height:40px;
+      font-size:2em;
+    }
+  }
+
+  .login{
+    float: left;
+    font-size: 2em;
+    text-decoration: none;
+    background-color: #333333;
+    color: #fff;
+    font-family: arial;
+    width: 19%;
+    padding: 84.5px 0;
+    text-align: center;
+  }
+  .signup{
+    float: right;
+    font-size: 2em;
+    text-decoration: none;
+    background-color: #333333;
+    color: #fff;
+    font-family: arial;
+    width: 80%;
+    padding: 40px 0;
+    text-align: center;
+  }
+}

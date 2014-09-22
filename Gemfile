@@ -22,7 +22,9 @@ gem "haml-rails"
 gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'elo'
+gem 'carrierwave'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
 end
 
