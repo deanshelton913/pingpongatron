@@ -46,12 +46,20 @@ html,body{
   background-color: aqua;
   height:100%;
 }
-h2{
+
+h1{
   font-family: 'lobster';
   color: #000;
-  padding: 8px 10px;
-  border-bottom: 2px dashed deeppink;
+  padding: 0;
   font-size: 2em;
+  text-align: center;
+}
+h2{
+  font-family: 'montserratbold';
+  color: #000;
+  padding: 0px 10px 8px;
+  border-bottom: 2px dashed deeppink;
+  font-size: 1.5em;
 }
 
 input[type="text"] {
@@ -61,7 +69,7 @@ input[type="text"] {
 a.btn{
   background-color: #333333;
   color: #fff;
-  font-family: arial;
+  font-family: 'montserratregular';
   text-align: center;
   font-size: 2em;
   text-decoration: none;
@@ -81,6 +89,46 @@ a.btn{
          font-url('lobster_webfont.woff') format('woff'),
          font-url('lobster_webfont.ttf') format('truetype'),
          font-url('lobster_webfont.svg#lobsterregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratregular';
+    src: font-url('montserrat-regular-webfont.eot');
+    src: font-url('montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('montserrat-regular-webfont.woff2') format('woff2'),
+         font-url('montserrat-regular-webfont.woff') format('woff'),
+         font-url('montserrat-regular-webfont.ttf') format('truetype'),
+         font-url('montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratbold';
+    src: font-url('montserrat-bold-webfont.eot');
+    src: font-url('montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('montserrat-bold-webfont.woff2') format('woff2'),
+         font-url('montserrat-bold-webfont.woff') format('woff'),
+         font-url('montserrat-bold-webfont.ttf') format('truetype'),
+         font-url('montserrat-bold-webfont.svg#montserratbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'amatic';
+    src: font-url('amaticsc-regular-webfont.eot');
+    src: font-url('amaticsc-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('amaticsc-regular-webfont.woff2') format('woff2'),
+         font-url('amaticsc-regular-webfont.woff') format('woff'),
+         font-url('amaticsc-regular-webfont.ttf') format('truetype'),
+         font-url('amaticsc-regular-webfont.svg#amatic_scregular') format('svg');
     font-weight: normal;
     font-style: normal;
 

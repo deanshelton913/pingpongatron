@@ -1,5 +1,8 @@
 {{#players}}
 <div id={{id}} class="player">
-  <img src="{{avatar.url}}"/><p>{{name}}</p>
+  <div class="thumb">
+    <img src="{{avatar.url}}"/>
+  </div>
+  <p class="name">{{name}}</p>
 </div>
 {{/players}}

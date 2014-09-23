@@ -3,8 +3,10 @@
   Login
 %section#user_search
   = link_to "Sign Up", signup_path, class: "signup btn"
-  %input{type:'text', name: 'name', placeholder: "Your Name", class: 'search', data:{ 'resource' => 'players'}}
-  %form{ method: "post", action: "sessions/create" } 
-    %input{name: 'session[user_id]', hidden: true, id: 'player_id' }
-    %input{type: "submit", class: 'primary', value:"Login"}
-#results
+  #search_area
+    %input{type:'text', name: 'name', placeholder: "Your Name", class: 'search', data:{ 'resource' => 'players'}}
+    #results
+  = form_tag('sessions', method: "post", id:"new_session") do
+    %input{name: 'player[user_id]', hidden: true, id: 'player_id' }
+
+  = link_to "Login", '#', class: "login btn primary", onclick:'$("#new_session").submit();'

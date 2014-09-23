@@ -3,7 +3,7 @@
 %h2
   Sign-up
 = form_for @player, url: { action: "create" } do |f|
-  = link_to "Login", login_path, class: 'login'
+  = link_to "Login", login_path, class: 'btn login'
   = f.text_field :name, placeholder: "Your Name"
   = f.file_field :avatar, id:'take-picture', accept:"image/*", name:'player[avatar]'
   = link_to "Sign Up", '#', class: "signup btn primary", onclick:'$("#new_player").submit();'

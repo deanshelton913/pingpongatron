@@ -1,4 +1,28 @@
 
+@mixin leftArrow(){
+  &:before{
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid transparent;
+    border-top: 0px solid transparent;
+    border-left: 90px solid #000;
+  }
+  &:after{
+    content: "";
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 0px solid transparent;
+    border-top: 100px solid transparent;
+    border-left: 90px solid #000;
+  }
+}
 
 form{
   position:relative;
@@ -17,22 +41,14 @@ form{
 
   .login{
     float: left;
-    font-size: 2em;
-    text-decoration: none;
-    background-color: #333333;
-    color: #fff;
-    font-family: arial;
     width: 19%;
     padding: 84.5px 0;
     text-align: center;
+    position:relative;
+    @include leftArrow();
   }
   .signup{
     float: right;
-    font-size: 2em;
-    text-decoration: none;
-    background-color: #333333;
-    color: #fff;
-    font-family: arial;
     width: 80%;
     padding: 40px 0;
     text-align: center;
