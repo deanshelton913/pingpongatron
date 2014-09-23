@@ -1,0 +1,16 @@
+@mixin bounding{
+  position:relative;
+  margin:0 auto;
+  width:98%;
+  padding:10px 0;
+}
+
+.signup{
+  float: left;
+  width: 19%;
+  padding: 84.5px 0;
+}
+
+#user_search{
+  @include bounding();
+}

@@ -14,4 +14,9 @@ class PlayersController < ApplicationController
   def player_params
     params.require(:player).permit(:name, :avatar)
   end
+
+  def find
+    @players = Player.where("name LIKE :prefix", prefix: "#{player_params}%")
+  end
+  
 end

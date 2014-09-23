@@ -1,0 +1,10 @@
+= content_for(:head) { stylesheet_link_tag 'sessions' }
+%h2
+  Login
+%section#user_search
+  = link_to "Sign Up", signup_path, class: "signup btn"
+  %input{type:'text', name: 'name', placeholder: "Your Name", class: 'search', data:{ 'resource' => 'players'}}
+  %form{ method: "post", action: "sessions/create" } 
+    %input{name: 'session[user_id]', hidden: true, id: 'player_id' }
+    %input{type: "submit", class: 'primary', value:"Login"}
+#results

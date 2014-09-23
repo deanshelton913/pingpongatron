@@ -1,14 +1,4 @@
-html,body{
-  background-color: aqua;
-  height:100%;
-}
-h2{
-  font-family: arial;
-  color: #fff;
-  padding: 10px;
-  background-color: deeppink;
-  font-size: 2em;
-}
+
 
 form{
   position:relative;
@@ -22,8 +12,6 @@ form{
     margin-left: 0;
     padding-left: 0;
     &#player_name{
-      height:40px;
-      font-size:2em;
     }
   }
 
