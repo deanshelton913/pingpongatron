@@ -1,12 +1,15 @@
 = content_for(:head) { stylesheet_link_tag 'sessions' }
-%h2
-  Login
 %section#user_search
-  = link_to "Sign Up", signup_path, class: "signup btn"
   #search_area
     %input{type:'text', name: 'name', placeholder: "Your Name", class: 'search', data:{ 'resource' => 'players'}}
     #results
   = form_tag('sessions', method: "post", id:"new_session") do
     %input{name: 'player[user_id]', hidden: true, id: 'player_id' }
 
-  = link_to "Login", '#', class: "login btn primary", onclick:'$("#new_session").submit();'
+  %a.button.blue{href:'#', onclick:'$("#new_session").submit();'}
+    %span 
+      Login
+  
+  %a.button.blue{href: signup_path, onclick:'$("#new_session").submit();'}
+    %span 
+      Sign Up

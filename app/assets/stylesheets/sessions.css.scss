@@ -5,48 +5,6 @@
   padding:10px 0;
 }
 
-@mixin leftArrow(){
-  &:before{
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-bottom: 100px solid transparent;
-    border-top: 0px solid transparent;
-    border-left: 90px solid #000;
-  }
-  &:after{
-    content: "";
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-bottom: 0px solid transparent;
-    border-top: 100px solid transparent;
-    border-left: 90px solid #000;
-  }
-}
-
-
-
-.signup{
-  float: left;
-  width: 19%;
-  padding: 84.5px 0;
-  position:relative;
-  @include leftArrow()
-}
-
-.login{
-  float: right;
-  width: 80%;
-  padding: 40px 0;
-  text-align: center;
-}
-
 #user_search{
   @include bounding();
 }
@@ -55,10 +13,11 @@ section#user_search{
 
   #search_area{
     position:relative;
-    width:80%;
+    width:100%;
     float: right;
     margin-left: 0;
     padding-left: 0;
+
     input{
       margin-bottom: 10px;
       width: 100%;

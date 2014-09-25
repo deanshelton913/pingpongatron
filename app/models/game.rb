@@ -54,6 +54,18 @@ class Game < ActiveRecord::Base
     @ratings ||= { player_one => rating_one, player_two => rating_two }
   end
 
+  # Find a game with a vacant position
+  def with_opening
+    games = Game.where("player_one_id is not null AND player_two_id is null")
+    return nil if games.empty?
+    games.first
+  end
+
+  def in_progress
+    games = Game.where("result is null AND player_one_id is not null AND player_two_id is not null")
+    return nil if games.empty?
+    games.first
+  end
 
   private
 

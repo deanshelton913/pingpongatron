@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   get 'log_in' => 'sessions#new', as: 'login'
   get 'sign_up' => 'players#new', as: 'signup'
   get 'search/:action' => 'searches#:action',:defaults => { :format => 'json' }
-  resources :games
+  resources :games do
+    collection do
+      get 'current'
+      get 'matchmaking'
+    end
+  end
   resources :players
   resources :sessions
 end

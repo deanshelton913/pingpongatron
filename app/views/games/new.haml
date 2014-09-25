@@ -1,5 +1,7 @@
 = content_for(:head) { stylesheet_link_tag 'players' }
-%a.big_go_button{href: 'games/new'}
-  PLAY
-%a.big_go_button{href: 'games/current'}
-  WATCH
+%a.button{href: '/games/join'}
+  %span
+    Play
+%a.button{href: '/games/current'}
+  %span
+    Leaderboard

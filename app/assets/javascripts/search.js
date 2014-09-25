@@ -12,16 +12,6 @@ $(function(){
         var rendered = Mustache.render(template, {"players": data});
         target.html(rendered);
         target.show()
-
-         // NO DATA BINDING!?  D:
-        $('#results .player').click(function(e){
-            var name = $(this).find('.name').html();
-            var player_id = $(this).attr('id');
-            $('#search_area input').val(name);
-            $('input#player_id').val(player_id);
-            $('#results').hide();
-            $('form#new_session').submit();
-        });
       });
     }
 
@@ -33,5 +23,15 @@ $(function(){
             render_players_results(data, $('#results'));
         });
     };
+
+    // Bind click event
+    $('body').on('click', '#results .player', function () {
+        var name = $(this).find('.name').html();
+        var player_id = $(this).attr('id');
+        $('#search_area input').val(name);
+        $('input#player_id').val(player_id);
+        $('#results').hide();
+        $('form#new_session').submit();
+    });
 
 });
