@@ -1,9 +1,11 @@
 = content_for(:head){ javascript_tag 'image_capture' }
-= content_for(:head) { stylesheet_link_tag 'players' }
-%h2
-  Sign-up
 = form_for @player, url: { action: "create" } do |f|
-  = link_to "Login", login_path, class: 'btn login'
-  = f.text_field :name, placeholder: "Your Name"
-  = f.file_field :avatar, id:'take-picture', accept:"image/*", name:'player[avatar]'
-  = link_to "Sign Up", '#', class: "signup btn primary", onclick:'$("#new_player").submit();'
+  .grid
+    .unit.two-thirds
+      = f.text_field :name, placeholder: "Your Name"
+    .unit.one-third
+      %label.button
+        %span
+          Take a Photo!
+          = f.file_field :avatar, id:'take-picture', class: 'custom-file-input', accept:"image/*", name:'player[avatar]'
+  %span= link_to "Sign Up", '#', onclick:'$("#new_player").submit();'

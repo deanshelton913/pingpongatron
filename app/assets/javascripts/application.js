@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require html5shiv
 //= require mustache
+//= require trunk
 //= require_tree .

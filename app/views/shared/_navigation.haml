@@ -1,0 +1,21 @@
+%header.slide
+  / Add "slideRight" class to items that move right when viewing Nav Drawer
+  %ul#navToggle.burger.slide
+    / Add "slideRight" class to items that move right when viewing Nav Drawer
+    %li
+    %li
+    %li
+  %h1 Pingpong-o-tron
+%nav.slide
+  %ul
+    %li
+      %a.active{:href => "../trunk.html"} HOME
+    %li
+      %a{:href => games_path } Leaderboard
+    %li
+      %a{:href => current_games_path } Current Game
+    %li
+      - if session[:id]
+        = link_to( "Sign Out", signout_path ) 
+      - else
+        = link_to( "Log In", root_path ) 

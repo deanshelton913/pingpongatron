@@ -5,10 +5,6 @@
     #results
   = form_tag('sessions', method: "post", id:"new_session") do
     %input{name: 'player[user_id]', hidden: true, id: 'player_id' }
-
-  %a.button.blue{href:'#', onclick:'$("#new_session").submit();'}
-    %span 
-      Login
   
   %a.button.blue{href: signup_path, onclick:'$("#new_session").submit();'}
     %span 

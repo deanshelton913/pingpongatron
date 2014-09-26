@@ -10,9 +10,11 @@ class GamesController < ApplicationController
     if game_with_opening
       game_with_opening.player_two_id = session[:id]
       game_with_opening.save
-      redirect_to game_path(game_with_opening.id)
+      return redirect_to current_games_path, flash: { warning: "Player two has joined!" }
     end
-    if Game.in_progress then redirect_to current_game_path, flash: { warning: "There is currently a game in progress" } end
+    if Game.in_progress
+      return redirect_to current_games_path, flash: { warning: "There is currently a game in progress" }
+    end
     redirect_to matchmaking_games_path, flash: { warning: "Waiting for opponent" }
   end
 
@@ -20,7 +22,13 @@ class GamesController < ApplicationController
   end
 
   def current
+    debugger
     @game = Game.in_progress
+    unless game then redirect_to games_path end
+    # @player_one = Player.find(@game.player_one_id)
+    # @player_two = Player.find(@game.player_two_id)
+    @player_one = {name:'banane'}
+    @player_two = {name:'bana2'}
   end
 
   def matchmaking

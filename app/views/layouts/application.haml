@@ -6,10 +6,19 @@
     = stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800"
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Pacifico'
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Metal+Mania:400'
+    = stylesheet_link_tag "trunk"
     = javascript_include_tag "application"
     = stylesheet_link_tag "application"
-    %h1
-      Pingpong-o-tron
     = yield(:head)
   %body
-    = yield
+    = render :partial => 'shared/navigation'
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "flash #{key}"
+    .content.slide
+      = yield
+      - if Rails.env.development?
+        #dev_console
+          %h4
+            Dev Console
+          = link_to 'Destroy all games', '/nuke_games'
+          = link_to 'Destroy all sessions', '/nuke_sessions'
