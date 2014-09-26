@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'search/:action' => 'searches#:action',:defaults => { :format => 'json' }
   resources :games do
     collection do
+      get 'join'
       get 'current'
       get 'matchmaking'
     end

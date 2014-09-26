@@ -5,19 +5,22 @@ class GamesController < ApplicationController
   def index
   end
 
-  def create
+  def join
     game_with_opening = Game.with_opening
-    if game_with_opening 
-      player1 = Player.find(game_with_opening.player_one_id)
-      player2 = Player.find(session[:id])
-      player1.versus(player2)
+    if game_with_opening
+      game_with_opening.player_two_id = session[:id]
+      game_with_opening.save
       redirect_to game_path(game_with_opening.id)
     end
-    if Game.in_progress then redirect_to watching_game_path, flash: { warning: "There is currently a game in progress" } end
+    if Game.in_progress then redirect_to current_game_path, flash: { warning: "There is currently a game in progress" } end
     redirect_to matchmaking_games_path, flash: { warning: "Waiting for opponent" }
   end
 
   def new
+  end
+
+  def current
+    @game = Game.in_progress
   end
 
   def matchmaking
