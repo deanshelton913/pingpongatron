@@ -1,7 +1,7 @@
 {{#players}}
 <div id={{id}} class="player">
   <div class="thumb">
-    <img src="{{avatar.url}}"/>
+    <img src="{{thumbnail}}"/>
   </div>
   <p class="name">{{name}}</p>
 </div>

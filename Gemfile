@@ -20,7 +20,7 @@ gem "haml-rails"
 gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'elo'
-gem 'carrierwave'
+gem 'paperclip', "~> 4.2"
 group :production do
   gem 'pg' #postgres on heroku
 end

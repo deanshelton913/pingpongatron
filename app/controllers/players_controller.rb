@@ -5,18 +5,18 @@ class PlayersController < ApplicationController
   end
 
   def create
+    debugger
+    player_params['name'].downcase!
     player = Player.new(player_params) 
-    player.save
-    session[:id] = player.id
-    redirect_to join_games_path
+    if player.save
+      session[:id] = player.id
+      return redirect_to join_games_path
+    end
+    redirect_to root_path, flash:{error: player.errors.full_messages.first}
   end
 
   def player_params
     params.require(:player).permit(:name, :avatar)
-  end
-
-  def find
-    @players = Player.where("name LIKE :prefix", prefix: "#{player_params}%")
   end
   
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'sign_out' => 'sessions#destroy', as: 'signout'
   get 'nuke_games' => 'util#nuke_games'
   get 'nuke_sessions' => 'util#nuke_sessions'
+  get 'nuke_players' => 'util#nuke_players'
   resources :games do
     collection do
       get 'join'

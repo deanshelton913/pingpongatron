@@ -20,6 +20,7 @@ $(function(){
         var resource_to_search = $('.search').data('resource')
         if (!force && existingString.length < 3) return; //wasn't enter, not > 2 char
         $.get('/search/' + resource_to_search +'?q=' + existingString, function(data) {
+            console.log(data)
             render_players_results(data, $('#results'));
         });
     };

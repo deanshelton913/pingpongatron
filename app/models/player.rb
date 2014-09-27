@@ -1,10 +1,12 @@
 require 'elo'
 
 class Player < ActiveRecord::Base
-  mount_uploader :avatar, AvatarUploader
-  
-  def a_game
-    arel_relation Game
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :thumb
+
+  def thumbnail
+    avatar.url(:thumb)
   end
 
   def games

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20110724182452) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: true do |t|
     t.integer  "result"
     t.integer  "player_one_id"
@@ -25,8 +28,11 @@ ActiveRecord::Schema.define(version: 20110724182452) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rating",     default: 1000
-    t.string   "avatar"
+    t.integer  "rating",              default: 1000
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

@@ -22,3 +22,6 @@
             Dev Console
           = link_to 'Destroy all games', '/nuke_games'
           = link_to 'Destroy all sessions', '/nuke_sessions'
+          = link_to 'Destroy all players', '/nuke_players'
+          :javascript
+            console.log(#{session.to_json})
