@@ -15,6 +15,8 @@
 
     - if session[:id]
       %li
+        = nav_link( "Play!", join_games_path ) 
+      %li
         = nav_link( "Sign Out", signout_path ) 
     - else
       %li

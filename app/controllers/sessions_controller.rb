@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       user_id = params[:player][:user_id]
       if Player.find(user_id)
         session[:id] = user_id
-        redirect_to new_game_path
+        redirect_to games_path
       else
         redirect_to sessions_new_path, flash: { error: "that user could not be located" }
       end

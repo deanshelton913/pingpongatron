@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   before_filter :must_be_logged_in, only:[:new, :create]
 
   def index
+    #leaderboard
   end
 
   def join
@@ -23,11 +24,11 @@ class GamesController < ApplicationController
 
   def current
     @game = Game.in_progress
-    unless @game then redirect_to games_path end
-    # @player_one = Player.find(@game.player_one_id)
-    # @player_two = Player.find(@game.player_two_id)
-    @player_one = {name:'banane'}
-    @player_two = {name:'bana2'}
+    if @game.nil? 
+      return redirect_to games_path, flash: {warning: "No game in progress currently"}
+    end
+    @player_one = Player.find(@game.player_one_id)
+    @player_two = Player.find(@game.player_two_id)
   end
 
   def matchmaking

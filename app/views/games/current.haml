@@ -1,8 +1,7 @@
-= content_for(:head) { stylesheet_link_tag 'matches' }
 %section{id: "current_match"}
   .player.serving
-    .name JOE SCHMIDT
-    .score 10
+    .name=@player_one.name
+    .score 0
   .player
-    .name BILLY BLANKS
-    .score 11
+    .name=@player_two.name
+    .score 0

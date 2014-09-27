@@ -24,6 +24,11 @@ $(function(){
         });
     };
 
+    $('#take-picture').change(function(){
+        var svg_image = 'assets/' + ($(this).val() == '' ? 'camera' : 'check') + '.svg';
+        $('.button.camera img').attr('src', svg_image);
+    });
+        
     // Bind click event
     $('body').on('click', '#results .player', function () {
         var name = $(this).find('.name').html();
