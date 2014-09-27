@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def random_awesome_name
-    ["Richard Cox",
-    "Harry",
-    "Dr. Baldock",
-    "Paul Hymen",
+    ["Bielzebub",
+    "Abrodolf Linkler",
+    "McBain (butthorn)",
+    "Dr. Butternut",
+    "Bob Law Blah",
     "Gaylord Focker",
     "Michael Bolton",
     "Bill Lumberg",
-    "Skeeter",
-    "Morey Bund"].sample
+    "Skeeter",].sample
   end
 end
