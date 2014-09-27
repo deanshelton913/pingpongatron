@@ -26,7 +26,9 @@ $(function(){
     };
 
     $('#take-picture').change(function(){
-        var svg_image = 'assets/' + ($(this).val() == '' ? 'camera' : 'check') + '.svg';
+        var camera = '<%= asset_path "camera.svg" %>';
+        var check = '<%= asset_path "check.svg" %>';
+        var svg_image =  ($(this).val() == '' ? camera : check);
         $('.button.camera img').attr('src', svg_image);
     });
         

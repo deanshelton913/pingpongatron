@@ -12,9 +12,9 @@
     = yield(:head)
   %body
     = render :partial => 'shared/navigation'
-    - flash.each do |key, value|
-      = content_tag :div, value, class: "flash #{key}"
     .content.slide
+      - flash.each do |key, value|
+        = content_tag :div, value, class: "flash #{key}"
       = yield
       - if Rails.env.development?
         #dev_console

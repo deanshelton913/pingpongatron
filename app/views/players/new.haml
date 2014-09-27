@@ -2,15 +2,13 @@
   Sign Up
 = content_for(:head){ javascript_tag 'image_capture' }
 = form_for @player, url: { action: "create" } do |f|
-  .grid
-    .unit.half
+  .grid#players_new
+    .unit.two-thirds
       = f.text_field :name, placeholder: "Your Awesome Name"
-    .unit.one-quarter
+    .unit.one-third
       %label.button.camera
         %span
           %img{src: asset_path('camera.svg'), alt: 'take a photo'}
           = f.file_field :avatar, id:'take-picture', class: 'custom-file-input', accept:"image/*", name:'player[avatar]'
       %a.button{href:"#",onclick:'$("#new_player").submit();'}
         Sign Up
-
-    .unit.one-quarter
