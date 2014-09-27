@@ -43,19 +43,36 @@ table {
 
 //=========Base App Styles go here===============
 
+html{
+  font-family:arial, 'sans-serif';
+}
 
 // --- repeatable elements ----
 // Buttons... custom input fields... things like that.
 
 input[type="text"]{
-  font-size:2em;
-  width: 90%;
-  margin: 23px 4%;
+  font-size:2.3em;
+  width: 100%;
+}
+
+.camera{
+  img{
+    padding-top:7px;
+  }
 }
 
 h1{
   font-family: 'lobster';
   font-size: 2em;
+}
+
+h2{
+  font-family: montserratregular;
+  margin: 20px 20px 0;
+  padding-bottom: 10px;
+  font-size: 1.5em;
+  font-weight: bolder;
+  border-bottom: 1px dotted;
 }
 
 a{
@@ -66,71 +83,57 @@ a{
 label input[type="file"] {
     position: fixed;
     top: -1000px;
+    display:none;
 }
+
+
 .button {
-    display: inline-block;
-    margin: 10px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow:    0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
-    -moz-box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
-    box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
-    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
-    -moz-transition: -moz-box-shadow .1s ease-in-out;
-    -o-transition: -o-box-shadow .1s ease-in-out;
-    transition: box-shadow .1s ease-in-out;
-    font-size: 25px;
-    color: #fff;
+  float:left;
+  margin-right: 11px;
+  margin-bottom: 10px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+  background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+  background-color:#ededed;
+  -webkit-border-top-left-radius:6px;
+  -moz-border-radius-topleft:6px;
+  border-top-left-radius:6px;
+  -webkit-border-top-right-radius:6px;
+  -moz-border-radius-topright:6px;
+  border-top-right-radius:6px;
+  -webkit-border-bottom-right-radius:6px;
+  -moz-border-radius-bottomright:6px;
+  border-bottom-right-radius:6px;
+  -webkit-border-bottom-left-radius:6px;
+  -moz-border-radius-bottomleft:6px;
+  border-bottom-left-radius:6px;
+  text-indent:0;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#777777;
+  font-family:arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:50px;
+  line-height:50px;
+  width:100px;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #ffffff;
 }
-
-.button span {
-    display: inline-block;
-    padding: 20px 30px;
-    background-color: #ec528d;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(338, 90%, 80%, .8)), to(hsla(338, 90%, 70%, .2)));
-    background-image: -webkit-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -moz-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -o-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
-    font-family: 'Pacifico', Arial, sans-serif;
-    line-height: 1;
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
-    -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
-    -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
-    -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
-    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+.button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+  background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+  background-color:#dfdfdf;
+}.button:active {
+  position:relative;
+  top:1px;
 }
-
-.button:hover span {
-    background-color: #ec6a9c;
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
-}
-
-.button:active, .button:focus {
-    -webkit-box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
-    box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
-}
-
-.button:active span {
-    -webkit-transform: translate(0, 4px);
-    -moz-transform: translate(0, 4px);
-    -o-transform: translate(0, 4px);
-    transform: translate(0, 4px);
-}
-
-
-
-
-
-
-
 
 
 
@@ -140,7 +143,35 @@ label input[type="file"] {
 // margins, floats, things you would find in a wireframe
 
 
-
+#sessions_new.grid{
+  #search_area.unit.half{
+    #results{
+      background-color:#fff;
+      width:100%;
+      .player{
+        padding:3px;
+        cursor:pointer;
+        &:hover{
+          background-color:#DBDEFF;
+        }
+        .thumb{
+          float:left;
+          height:60px;
+          overflow:hidden;
+          margin-right:10px;
+          img{
+            height:100%;
+          }
+        }
+        p{
+          padding:6px 0;
+          font-family:'amatic', arial;
+          font-size:3em;
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -159,10 +190,15 @@ html,body{
 
 
 @media only screen and (max-width: 780px) {
-  .content.slide{
+  .content.slide {
     padding-top:60px;
   }
+  nav li.current a:after{
+    top: 18px;
+    left: 0px;
+  }
 }
+
 
 
 
@@ -171,6 +207,22 @@ html,body{
 nav a{
   font-family: 'montserratbold';
   text-transform:uppercase;
+}
+nav li.current a{
+  color:#000;
+  position:relative;
+
+  &:after{
+    position:absolute;
+    content:"";
+    border-radius: 50%;
+    width:20px;
+    height:20px;
+    background:#ccc;
+    opacity:0.5;
+    bottom:0;
+    left: 38%;
+  }
 }
 
 //  FONTS

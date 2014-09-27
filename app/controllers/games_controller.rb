@@ -22,9 +22,8 @@ class GamesController < ApplicationController
   end
 
   def current
-    debugger
     @game = Game.in_progress
-    unless game then redirect_to games_path end
+    unless @game then redirect_to games_path end
     # @player_one = Player.find(@game.player_one_id)
     # @player_two = Player.find(@game.player_two_id)
     @player_one = {name:'banane'}

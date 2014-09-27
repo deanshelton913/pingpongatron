@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @name = random_awesome_name
   end
   
   def create

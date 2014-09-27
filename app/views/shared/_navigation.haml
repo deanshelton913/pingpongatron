@@ -9,13 +9,17 @@
 %nav.slide
   %ul
     %li
-      %a.active{:href => "../trunk.html"} HOME
-    %li
-      %a{:href => games_path } Leaderboard
+      = nav_link("Leaderboard", games_path)
     %li
       %a{:href => current_games_path } Current Game
-    %li
-      - if session[:id]
-        = link_to( "Sign Out", signout_path ) 
-      - else
-        = link_to( "Log In", root_path ) 
+
+    - if session[:id]
+      %li
+        = nav_link( "Sign Out", signout_path ) 
+    - else
+      %li
+        = nav_link("Log In", new_session_path ) 
+      %li
+        = nav_link("Sign Up", root_path )
+      
+
