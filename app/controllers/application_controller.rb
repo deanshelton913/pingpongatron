@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
     "Gaylord Focker",
     "Michael Bolton",
     "Bill Lumberg",
-    "Skeeter",].sample
+    "Skeeter"].sample
   end
 end
