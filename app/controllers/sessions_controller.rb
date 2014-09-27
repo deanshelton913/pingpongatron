@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       user_id = params[:player][:user_id]
       if Player.find(user_id)
         session[:id] = user_id
-        redirect_to games_path
+        redirect_to games_path, {flash: {warning: "Welcome back!"}}
       else
         redirect_to sessions_new_path, flash: { error: "that user could not be located" }
       end
@@ -16,8 +16,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    if Player.find(session[:id]).unresolved_game
+      return redirect_to leave_games_path, flash:{warning: "You are currently in a game."}
+    end
     session[:id] = nil
-    redirect_to root_path
+    redirect_to root_path, flash: { warning: "You are logged out! "}
   end
 
   def session_params

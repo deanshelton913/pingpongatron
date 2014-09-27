@@ -9,12 +9,21 @@ class Player < ActiveRecord::Base
     avatar.url(:thumb)
   end
 
+  def a_game
+    arel_relation Game
+  end
+
   def games
     Game.where(a_game[:player_one_id].eq(id).or(a_game[:player_two_id].eq(id)))
   end
 
   def victories
     Game.where(a_game[:player_one_id].eq(id).and('result >= 1').or(a_game[:player_two_id].eq(id)).and('result = 0'))
+  end
+
+  def unresolved_game
+    # Game.where(a_game[:player_one_id].eq(id).and(a_game[:player_one_id].id(nil)).or(a_game[:player_two_id].eq(id)).and(a_game[:player_one_id].id(nil)))
+    Game.where("(player_one_id = #{id} OR player_two_id = #{id}) AND result IS NULL").first
   end
 
   def defeats

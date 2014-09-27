@@ -1,0 +1,9 @@
+#games_leave
+  %h2
+    Abandon your current game?
+  %p
+    No score will be recorded, it will be like it never happened.
+  = form_for @game, html:{ id:'destroy_game', method: :delete} do
+    %a.button{href: "#", onclick:'$("#destroy_game").submit();'}
+      %span 
+        Quit!

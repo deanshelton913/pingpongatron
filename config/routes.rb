@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'join'
       get 'current'
       get 'matchmaking'
+      get 'leave'
     end
   end
   resources :players

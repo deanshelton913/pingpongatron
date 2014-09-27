@@ -5,7 +5,6 @@ class PlayersController < ApplicationController
   end
 
   def create
-    debugger
     player_params['name'].downcase!
     player = Player.new(player_params) 
     if player.save

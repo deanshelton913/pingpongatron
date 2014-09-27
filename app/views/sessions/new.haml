@@ -1,12 +1,12 @@
 %h2
   Log In
 %section#sessions_new.grid
-  #search_area.unit.half
+  #search_area.unit.two-thirds
     %input{type:'text', name: 'name', placeholder: @name+"?", class: 'search', data:{ 'resource' => 'players'}}
     #results
   = form_tag(sessions_path, method: "post", id:"new_session") do
     %input{name: 'player[user_id]', hidden: true, id: 'player_id' }
-  .unit.half
+  .unit.one-third
     %a.button{href: signup_path, onclick:'$("#new_session").submit();'}
       %span 
         Log In
