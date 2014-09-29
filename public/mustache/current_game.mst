@@ -1,6 +1,10 @@
 {{#players}}
-<div id={{id}} class="player half unit {{serving}}">
+<div id=player_{{id}} class="player half unit {{serving}} {{controllable}}">
   <div class="name">{{name}}</div>
   <div class="score">{{score}}</div>
+  <div class="controls">
+    <div class="button plus">+</div>
+    <div class="button minus">-</div>
+  </div>
 </div>
 {{/players}}

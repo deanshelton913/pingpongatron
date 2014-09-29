@@ -17,12 +17,11 @@ class GamesController < ApplicationController
   end
 
   def current
-    @game = Game.in_progress
-    if @game.nil? 
+    game = Game.in_progress
+    if game.nil? 
       return redirect_to games_path, flash: {warning: "No game in progress currently"}
     end
-    @player_one = Player.find(@game.player_one_id)
-    @player_two = Player.find(@game.player_two_id)
+    @game = game.formatted
   end
 
   def matchmaking

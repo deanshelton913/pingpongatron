@@ -1,11 +1,17 @@
 class CurrentGameController < WebsocketRails::BaseController
+
+  # NOTE:
+  # This file is a bit insane... 
+  # Many of the things here are bad practice... and i know it. :/
+  # This is a hobby project, and my first attempt with web sockets.
+
   def initialize_session
     controller_store[:message_count] = 0
   end
 
   def hello
     controller_store[:current_game_state] = Game.with_opening || Game.in_progress
-    # broadcast_game_state_change("Hello!")
+    broadcast_game_state_change("Hello!")
   end
 
   def goodbye
@@ -38,8 +44,8 @@ class CurrentGameController < WebsocketRails::BaseController
     broadcast_game_state_change(info)
   end
 
-  # def remove_player
-  # end
+  def remove_player
+  end
 
   def increment_score
     game = controller_store[:current_game_state]
@@ -59,6 +65,6 @@ class CurrentGameController < WebsocketRails::BaseController
     broadcast_game_state_change("Player score decremented")
   end
 
-  # def change_service
-  # end
+  def change_service
+  end
 end

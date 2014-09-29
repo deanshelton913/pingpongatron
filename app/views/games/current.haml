@@ -1,17 +1,9 @@
 :javascript
   $(function(){
     GameEvents.receive('game_state_change', repaint_current_game_screen);
-    GameEvents.bind_click_send_event('#add_point', 'increment_score')
+    GameEvents.bind_click_send_event('.plus', 'increment_score')
+    GameEvents.bind_click_send_event('.minus', 'decrement_score')
   });
 #current_game.grid
-  .unit.half.player.serving
-    .name=@player_one.name
-    .score 0
-  .unit.half.player
-    .name=@player_two.name
-    .score 0
-#game_controls.grid
-  %a#add_point{href:'#'}
-    add point
-  %a#subtract_point{href:'#'}
-    subtract point
+  / {{Loaded via ajax and mustache!}}
+  / Check current_game.mst for template.

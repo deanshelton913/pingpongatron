@@ -1,17 +1,27 @@
 $(function(){
 
-  window.GameEvents = {}
-  GameEvents.standard_payload = { 'player_id': Number(session.id) }
+  // NOTE:
+  // This file is a bit insane... 
+  // Many of the things here are bad practice... and i know it. :/
+  // This is a hobby project, and my first attempt with web sockets.
+  window.GameEvents = {} 
   GameEvents.dispatcher = new WebSocketRails('localhost:3000/websocket');
 
+  // We always send the same thing to the server... Our players id.
+  // That, combined with the event we are triggering, is enough context
+  // to take action on the state of the game.
+  GameEvents.standard_payload = { 'player_id': Number(session.id) }
+
   // Binding methods. 
-  // These are used to attach events to the dispatcher.
+  // These are used to attach send/receive events to the dispatcher.
   GameEvents.receive = function (event_name, callback){
     GameEvents.dispatcher.bind(event_name, callback);
   };
+
   GameEvents.send = function(event_name){
     this.dispatcher.trigger(event_name, this.standard_payload, this.success, this.failure);
   };
+
   GameEvents.success = function(response) {
     console.log('-------------------');
     console.log("Wow it worked: ");
@@ -26,13 +36,15 @@ $(function(){
     console.log('-------------------');
   }
   GameEvents.bind_click_send_event = function(target_selector, event_name){
-    $(target_selector).click(function(e){
+    $('body').on('click', target_selector, function(e){
       e.preventDefault();
       GameEvents.send(event_name);
     });
   }
 
-  // HELPERS
+  // HELPERS --------------------------
+  // These are just a way of abscracting complexity into
+  // a more readable context.
   function game_is_full(data){
     if (data.game_state.players.length === 2){
       return true;
@@ -44,17 +56,12 @@ $(function(){
     window.location = path;
   }
 
-  // IMPLEMENTATION
-
-  // Exmaple of an implimentation to be used by a single rails view.
-  // GameEvents.receive('game_state_change', function(data){
-  //   //...do stuff
-  // });
-  // GameEvents.send('do_stuff');
-
-  // Receivers
+  // RECEIVERS ------------------------
+  // These are implimented in specific views that require
+  // some action based on a subscribed event.
+  // Really, these should go elsewhere... but... meh.
   redirect_to_current_game_when_matched = function(data){
-    console.log(data)
+    console.log(data);
     if (game_is_full(data)) {
       redirect_to('/games/current');
     }
@@ -63,7 +70,13 @@ $(function(){
   repaint_current_game_screen = function(data){
     console.log(data)
     $.get('/mustache/current_game.mst', function(template) {
-      var rendered = Mustache.render(template, { 'players' : data.game_state.players });
+      var payload = { 
+        'players' : data.game_state.players, 
+        'controllable': function(){
+          return (this.id == window.session.id ? 'controllable' : '');
+        }
+      }
+      var rendered = Mustache.render(template, payload);
       $('#current_game').html(rendered);
     });
   }
