@@ -33,6 +33,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.middleware.delete Rack::Lock
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -21,6 +21,7 @@ gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'elo'
 gem 'paperclip', "~> 4.2"
+gem 'websocket-rails'
 group :production do
   gem 'pg' #postgres on heroku
 end

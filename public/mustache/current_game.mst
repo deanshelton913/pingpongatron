@@ -1,0 +1,6 @@
+{{#players}}
+<div id={{id}} class="player half unit {{serving}}">
+  <div class="name">{{name}}</div>
+  <div class="score">{{score}}</div>
+</div>
+{{/players}}

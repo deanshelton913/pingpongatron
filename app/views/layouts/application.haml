@@ -24,4 +24,5 @@
           = link_to 'Destroy all sessions', '/nuke_sessions'
           = link_to 'Destroy all players', '/nuke_players'
           :javascript
+            session = #{session.to_json};
             console.log(#{session.to_json})

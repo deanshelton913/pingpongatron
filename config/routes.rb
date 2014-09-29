@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'nuke_players' => 'util#nuke_players'
   resources :games do
     collection do
-      get 'join'
       get 'current'
       get 'matchmaking'
       get 'leave'

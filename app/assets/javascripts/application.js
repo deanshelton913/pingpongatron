@@ -15,4 +15,7 @@
 //= require html5shiv
 //= require mustache
 //= require trunk
+//= require base
+//= require websocket_rails/main
 //= require_tree .
+

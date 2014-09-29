@@ -67,8 +67,27 @@ class Game < ActiveRecord::Base
     games.first
   end
 
+  def formatted
+    players = []
+    if player_one_id
+      players << {
+        id: player_one_id,
+        score: player_one_score,
+        name: Player.find(player_one_id).name,
+      }
+    end
+    if player_two_id
+      players << {
+        id: player_two_id,
+        score: player_two_score,
+        name: Player.find(player_two_id).name,
+      }
+    end
+    {game_id: id, players: players}
+  end
+  
   private
-
+  
 	# Create an Elo::Rating object for player one
   def rating_one
     Elo::Rating.new(:result        => self.result,
@@ -84,6 +103,5 @@ class Game < ActiveRecord::Base
                :other_rating  => player_one.rating,
                :k_factor      => player_two.k_factor)
   end
-  
   
 end

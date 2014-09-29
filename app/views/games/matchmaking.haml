@@ -1,1 +1,7 @@
+:javascript
+  $(function(){
+    GameEvents.send('add_player');
+    GameEvents.receive('game_state_change', redirect_to_current_game_when_matched)
+  });
+
 WAITING FOR SOMEONE TO JOIN
