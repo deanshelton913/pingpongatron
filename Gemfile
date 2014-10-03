@@ -22,6 +22,7 @@ gem 'autoprefixer-rails'
 gem 'elo'
 gem 'paperclip', "~> 4.2"
 gem 'websocket-rails'
+gem 'rails_12factor'
 group :production do
   gem 'pg' #postgres on heroku
 end
