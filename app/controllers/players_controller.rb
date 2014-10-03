@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
 
   def new
+    return redirect_to games_path if session[:id]
     @player = Player.new
   end
 
@@ -16,6 +17,9 @@ class PlayersController < ApplicationController
 
   def player_params
     params.require(:player).permit(:name, :avatar)
+  end
+
+  def self.must_be_anon
   end
   
 end

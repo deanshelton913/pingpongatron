@@ -51,7 +51,7 @@ html{
 // Buttons... custom input fields... things like that.
 
 input[type="text"]{
-  font-size:1.9vw;
+  font-size:1.9em;
   width: 100%;
   margin-top: 5px;
 }
@@ -74,7 +74,7 @@ h2{
   font-family: montserratregular;
   margin: 20px 0 0;
   padding-bottom: 10px;
-  font-size: 1.5vw;
+  font-size: 1.5em;
   font-weight: bolder;
   border-bottom: 1px dotted;
 }
@@ -161,6 +161,8 @@ label input[type="file"] {
       .player{
         padding:3px;
         cursor:pointer;
+        height:60px;
+        border-bottom:1px dotted #ccc;
         &:hover{
           background-color:#DBDEFF;
         }
@@ -177,7 +179,7 @@ label input[type="file"] {
           padding:6px 0;
           margin:0;
           font-family:'amatic', arial;
-          font-size:3vw;
+          font-size:40px;
         }
       }
     }
@@ -186,6 +188,18 @@ label input[type="file"] {
 
 #current_game{
   height:100%;
+  &:after{
+    content: "";
+    background-image: asset-url('vs-regular.png');
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    background-size: 30%;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity:0.5;
+  }
   .unit:first-child {
     padding-left: 10px;
     border-right: 6px solid aqua;
@@ -194,7 +208,11 @@ label input[type="file"] {
     height:100%;
     background-color:#E8FCFF;
     position:relative;
+    color:#000;
+    font-weight:bolder;
+    overflow:hidden;
     padding-top:60px;
+    background-image: attr(data-avatar url);
     &.serving:after{
       color:#fff;
       padding:10px;
@@ -204,6 +222,10 @@ label input[type="file"] {
       top:0;
       left:0;
       width:100%;
+    }
+    img{
+      width: 100%;
+      height:auto;
     }
     .name{
       font-size: 5vw;
@@ -220,11 +242,13 @@ label input[type="file"] {
         position:absolute;
         bottom:0;
         left:10px;
+        width:30%;
       }
       .minus{
         position:absolute;
         bottom:0;
         right:0;
+        width:30%;
       }
     }
     &.controllable .controls{
@@ -247,7 +271,7 @@ html,body{
 }
 
 .content{
-   padding:0 20px 10px; 
+   padding:0 0 10px; 
   &.slide{
     background-color: aqua;
     padding-top:0px;
@@ -525,4 +549,41 @@ nav li.current a{
     max-width: 1180px;
     margin: 0 auto;
   }
+}
+
+
+/*NOTIFICATIONS*/
+#note {
+    text-transform:capitalize;
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size:2em;
+    background: #fde073;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+    &.error{
+      background:pink;
+
+    }
+}
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateY(-150px); }
+    10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+    0%, 100% { -moz-transform: translateY(-150px); }
+    10%, 90% { -moz-transform: translateY(0px); }
+}
+.cssanimations.csstransforms #note {
+    -webkit-transform: translateY(-150px);
+    -webkit-animation: slideDown 2.5s 0s 1 ease forwards;
+    -moz-transform:    translateY(-50px);
+    -moz-animation:    slideDown 2.5s 0s 1 ease forwards;
 }

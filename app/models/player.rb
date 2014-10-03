@@ -1,12 +1,16 @@
 require 'elo'
 
 class Player < ActiveRecord::Base
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/"+ActionController::Base.helpers.asset_path("/fallback/ping_pong.png", :digest => false)
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   attr_accessor :thumb
 
   def thumbnail
     avatar.url(:thumb)
+  end
+
+  def full_avatar
+    avatar.url
   end
 
   def a_game

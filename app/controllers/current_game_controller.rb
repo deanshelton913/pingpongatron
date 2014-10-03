@@ -34,9 +34,9 @@ class CurrentGameController < WebsocketRails::BaseController
       info = "You are the first one here."
     else # you are player 2
       game = controller_store[:current_game_state]
-      unless game.player_one_id.to_i == message['player_id']
-        game.player_two_id = message['player_id'] 
-        info = "Player two has entered the game #{message}"
+      if game.player_one_id.to_i != message['player_id'].to_i
+        game.player_two_id = message['player_id'].to_i
+        info = "Player two has entered the game"
       end
     end
     game.save
@@ -49,9 +49,17 @@ class CurrentGameController < WebsocketRails::BaseController
 
   def increment_score
     game = controller_store[:current_game_state]
-    game.player_one_score += 1 if game.player_one_id == message['player_id']
-    game.player_two_score += 1 if game.player_two_id == message['player_id']
-    info = Player.find(message['player_id']).name + ' scored'
+    player = Player.find(message['player_id'])
+    info = player.name + ' scored'
+
+    if game.player_one_id == message['player_id']
+      game.player_one_score += 1
+      game.winner = Player.find(message['player_id']) if player_one_wins?
+    end
+    if game.player_two_id == message['player_id']
+      game.player_two_score += 1
+      game.winner = Player.find(message['player_id']) if player_two_wins?
+    end 
     game.save
     broadcast_game_state_change(info)
   end
@@ -65,6 +73,18 @@ class CurrentGameController < WebsocketRails::BaseController
     broadcast_game_state_change("Player score decremented")
   end
 
-  def change_service
+  def player_two_wins?
+    game = controller_store[:current_game_state]
+    game.player_two_score > 20 && game.player_one_score < (game.player_two_score - 2)
   end
+
+  def player_one_wins?
+    game = controller_store[:current_game_state]
+    game.player_one_score > 20 && game.player_two_score < (game.player_one_score - 2)
+  end
+
 end
+
+
+
+

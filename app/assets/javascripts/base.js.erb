@@ -42,4 +42,12 @@ $(function(){
         $('form#new_session').submit();
     });
 
+    $("#close").click(function(e) {
+        e.preventDefault();
+        $("#note").hide();
+    });
+    $('#note').bind('webkitAnimationEnd', function(){
+        this.style.slideDown = '';
+    });
+
 });

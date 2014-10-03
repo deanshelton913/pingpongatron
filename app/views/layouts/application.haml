@@ -11,10 +11,13 @@
     = stylesheet_link_tag "application"
     = yield(:head)
   %body
+    - flash.each do |key, value|
+      #note{class: "#{key}"}
+        = value
+        %a.close{href:"#{}"}
+          [close]
     = render :partial => 'shared/navigation'
     .content.slide
-      - flash.each do |key, value|
-        = content_tag :div, value, class: "flash #{key}"
       = yield
       - if Rails.env.development?
         #dev_console

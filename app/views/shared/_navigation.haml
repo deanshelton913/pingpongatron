@@ -14,8 +14,9 @@
       = nav_link("Current Game", current_games_path)
 
     - if session[:id]
-      %li
-        = nav_link( "Play!", matchmaking_games_path ) 
+      - unless params[:action] == 'current'
+        %li
+          = nav_link( "Play!", matchmaking_games_path ) 
       %li
         = nav_link( "Sign Out", signout_path ) 
     - else

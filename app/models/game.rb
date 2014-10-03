@@ -68,22 +68,45 @@ class Game < ActiveRecord::Base
   end
 
   def formatted
+    # oh god.. the horror..
     players = []
     if player_one_id
+      player_one = Player.find(player_one_id)
       players << {
         id: player_one_id,
         score: player_one_score,
-        name: Player.find(player_one_id).name,
+        name: player_one.name,
+        avatar: player_one.avatar,
+        result_class: result_class('one')
       }
     end
     if player_two_id
+      player_two = Player.find(player_two_id)
       players << {
         id: player_two_id,
         score: player_two_score,
-        name: Player.find(player_two_id).name,
+        name: player_two.name,
+        avatar: player_two.avatar,
+        result_class: result_class('two')
       }
     end
-    {game_id: id, players: players}
+    # kill me
+    {game_id: id, players: players, game_point: game_point?}
+  end
+
+  def result_class(player_number)
+    if result != nil
+      if player_number == 'one'
+        return result > 0 ? 'winner' : 'loser'
+      end
+      if player_number == 'two'
+        return result == 0 ? 'winner' : 'loser'
+      end
+    end
+  end
+
+  def game_point?
+    !!([player_one_score, player_two_score].max >= 20)
   end
   
   private

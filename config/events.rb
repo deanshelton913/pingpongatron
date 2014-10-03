@@ -8,6 +8,7 @@ WebsocketRails::EventMap.describe do
     subscribe :client_disconnected, :to => CurrentGameController, :with_method => :goodbye
     subscribe :add_player, :to => CurrentGameController, :with_method => :add_player
     subscribe :increment_score, :to => CurrentGameController, :with_method => :increment_score
+    subscribe :decrement_score, :to => CurrentGameController, :with_method => :decrement_score
   #
   # Here is an example of mapping namespaced events:
   #   namespace :product do
