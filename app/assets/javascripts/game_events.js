@@ -5,7 +5,7 @@ $(function(){
   // Many of the things here are bad practice... and i know it. :/
   // This is a hobby project, and my first attempt with web sockets.
   window.GameEvents = {} 
-  GameEvents.dispatcher = new WebSocketRails('localhost:3000/websocket');
+  GameEvents.dispatcher = new WebSocketRails(window.location.href.split("/")[2] + '/websocket');
 
   // We always send the same thing to the server... Our players id.
   // That, combined with the event we are triggering, is enough context
@@ -21,6 +21,11 @@ $(function(){
   GameEvents.send = function(event_name){
     this.dispatcher.trigger(event_name, this.standard_payload, this.success, this.failure);
   };
+
+  GameEvents.dispatcher.on_open = function(data) {
+    console.log('Connection has been established: ', data);
+    // You can trigger new server events inside this callback if you wish.
+  }
 
   GameEvents.success = function(response) {
     console.log('-------------------');

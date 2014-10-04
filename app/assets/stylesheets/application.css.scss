@@ -186,6 +186,16 @@ label input[type="file"] {
   }
 }
 
+@mixin game_result($content){
+  content:$content;
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  height:300px;
+  font-size:2em;
+  font-family: 'lobster';
+}
 #current_game{
   height:100%;
   &:after{
@@ -213,6 +223,12 @@ label input[type="file"] {
     overflow:hidden;
     padding-top:60px;
     background-image: attr(data-avatar url);
+    &.loser .score:after{
+      @include game_result("LOSER");
+    }
+    &.winner .score:after{
+      @include game_result("WINNER");
+    }
     &.serving:after{
       color:#fff;
       padding:10px;
@@ -231,8 +247,10 @@ label input[type="file"] {
       font-size: 5vw;
       text-transform: capitalize;
       text-align:center;
+      position:relative;
     }
     .score{
+      position:relative;
       font-size: 5vw;
       text-align:center;
     }

@@ -29,6 +29,18 @@ class CurrentGameController < WebsocketRails::BaseController
   # receivers
   def add_player
     info = "Still waiting for opponent."
+    if controller_store[:current_game_state].nil? # you are player 1
+      game = Game.new(player_one_id: message['player_id'])
+      info = "You are the first one here."
+    else # you are player 2
+      game = controller_store[:current_game_state]
+      if game.player_one_id.to_i != message['player_id'].to_i
+        game.player_two_id = message['player_id'].to_i
+        info = "Player two has entered the game"
+      end
+    end
+    game.save
+    controller_store[:current_game_state] = game
     broadcast_game_state_change(info)
   end
 
