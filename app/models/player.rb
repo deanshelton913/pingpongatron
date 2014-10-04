@@ -1,7 +1,10 @@
 require 'elo'
 
 class Player < ActiveRecord::Base
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/"+ActionController::Base.helpers.asset_path("/fallback/ping_pong.png", :digest => false)
+  has_attached_file :avatar, 
+    :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
+    :convert_options => { :all => '-auto-orient' }, 
+    :default_url =>  "/assets/"+ActionController::Base.helpers.asset_path("/fallback/ping_pong.png", :digest => false)
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   attr_accessor :thumb
 
@@ -22,7 +25,8 @@ class Player < ActiveRecord::Base
   end
 
   def victories
-    Game.where(a_game[:player_one_id].eq(id).and('result >= 1').or(a_game[:player_two_id].eq(id)).and('result = 0'))
+    Game.where("player_one_id = #{id} AND result >= 1 OR player_two_id = #{id} AND result = 0")
+    # Game.where(a_game[:player_one_id].eq(id).and('result >= 1').or(a_game[:player_two_id].eq(id)).and('result = 0'))
   end
 
   def unresolved_game
@@ -31,7 +35,8 @@ class Player < ActiveRecord::Base
   end
 
   def defeats
-    Game.where(a_game[:player_one_id].eq(id).and('result = 0').or(a_game[:player_two_id].eq(id)).and('result >= 1'))
+    Game.where("player_one_id = #{id} AND result = 0 OR player_two_id = #{id} AND result >= 1")
+    # Game.where(a_game[:player_one_id].eq(id).and('result = 0').or(a_game[:player_two_id].eq(id)).and('result >= 1'))
   end
 
   def arel_relation(model)

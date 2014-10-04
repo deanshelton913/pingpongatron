@@ -68,30 +68,26 @@ class Game < ActiveRecord::Base
   end
 
   def formatted
-    # oh god.. the horror..
     players = []
-    if player_one_id
-      player_one = Player.find(player_one_id)
-      players << {
-        id: player_one_id,
-        score: player_one_score,
-        name: player_one.name,
-        avatar: player_one.avatar,
-        result_class: result_class('one')
+    goobie = []
+    players << Player.find(player_one_id) if player_one_id
+    players << Player.find(player_two_id) if player_two_id
+    players.each_with_index do |player, index|
+      goobie << {
+        id: player.id,
+        score: self.send("player_#{index==0 ? "one" : "two"}_score"),
+        name: player.name,
+        avatar: player.avatar,
+        rating: player.rating,
+        games_played: player.games_played,
+        victories: player.victories.count,
+        defeats: player.defeats.count,
+        result_class: result_class('one'),
+        pro: player.pro_rating?,
+        starter: player.starter?
       }
-    end
-    if player_two_id
-      player_two = Player.find(player_two_id)
-      players << {
-        id: player_two_id,
-        score: player_two_score,
-        name: player_two.name,
-        avatar: player_two.avatar,
-        result_class: result_class('two')
-      }
-    end
-    # kill me
-    {game_id: id, players: players, game_point: game_point?}
+    end 
+    {game_id: id, players: goobie, game_point: game_point?}
   end
 
   def result_class(player_number)

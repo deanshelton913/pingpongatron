@@ -16,9 +16,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if Player.find(session[:id]).unresolved_game
-      return redirect_to leave_games_path, flash:{warning: "You are currently in a game."}
+    if Player.find(session[:id])
+      if player.unresolved_game
+        return redirect_to leave_games_path, flash:{warning: "You are currently in a game."}
+      end
     end
+  rescue 
     session[:id] = nil
     redirect_to root_path, flash: { warning: "You are logged out! "}
   end

@@ -57,6 +57,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
+    exifr (1.2.0)
     faye-websocket (0.7.4)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
@@ -184,6 +185,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   elo
+  exifr (~> 1.2.0)
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails

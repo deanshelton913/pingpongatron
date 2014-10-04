@@ -254,6 +254,13 @@ label input[type="file"] {
       font-size: 5vw;
       text-align:center;
     }
+    .stats{
+      background: #fff;
+      padding: 10px 0;
+      margin: 0;
+      width: 100%;
+      border-top: dotted;
+    }
     .controls{
       display:none;
       .plus{

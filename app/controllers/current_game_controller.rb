@@ -32,7 +32,7 @@ class CurrentGameController < WebsocketRails::BaseController
     if controller_store[:current_game_state].nil? # you are player 1
       game = Game.new(player_one_id: message['player_id'])
       info = "You are the first one here."
-    else # you are player 2
+    else # you are player 2...or 3...or 4
       game = controller_store[:current_game_state]
       if game.player_one_id.to_i != message['player_id'].to_i
         game.player_two_id = message['player_id'].to_i
