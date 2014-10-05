@@ -197,7 +197,7 @@ label input[type="file"] {
   font-family: 'lobster';
 }
 #current_game{
-  height:100%;
+  position:relative;
   &:after{
     content: "";
     background-image: asset-url('vs-regular.png');
@@ -221,8 +221,17 @@ label input[type="file"] {
     color:#000;
     font-weight:bolder;
     overflow:hidden;
-    padding-top:60px;
+    padding-top:70px;
     background-image: attr(data-avatar url);
+
+    p{
+      width: 60%;
+      text-align: center;
+      margin: 0 auto 10px;
+      border:1px solid;
+      line-height:0;
+      height:30%;
+    }
     &.loser .score:after{
       @include game_result("LOSER");
     }
@@ -255,7 +264,6 @@ label input[type="file"] {
       text-align:center;
     }
     .stats{
-      background: #fff;
       padding: 10px 0;
       margin: 0;
       width: 100%;
@@ -265,13 +273,13 @@ label input[type="file"] {
       display:none;
       .plus{
         position:absolute;
-        bottom:0;
+        top:10px;
         left:10px;
         width:30%;
       }
       .minus{
         position:absolute;
-        bottom:0;
+        top:10px;
         right:0;
         width:30%;
       }
@@ -302,6 +310,7 @@ label input[type="file"] {
   h2 span{
     font-size: 11px;
     display: block;
+    text-align:right;
     color: #000;
   }
   #leaderboard{
@@ -328,6 +337,10 @@ label input[type="file"] {
         text-align:center;
       }
       .name{
+        span{
+          float: left;
+          padding: 0 20px;
+        }
         .image{
           height: 40px;
           overflow: hidden;
@@ -360,22 +373,23 @@ html,body{
 }
 
 .content{
-   padding:0 0 10px; 
+   padding:0 10px 10px; 
   &.slide{
     background-color: aqua;
-    padding-top:0px;
-    position: fixed;
-    top:60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding-top: 0px;
+    position: relative;
+    /* top: 60px; */
+    /* left: 0; */
+    /* right: 0; */
+    /* bottom: 0; */
+    float: left;
+    height: 100%;
   }
 }
 
 
 @media only screen and (max-width: 780px) {
   .content.slide {
-    padding-top:60px;
     top: 0px;
   }
   nav li.current a:after{

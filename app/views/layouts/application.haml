@@ -10,7 +10,7 @@
     = javascript_include_tag "application"
     = stylesheet_link_tag "application"
     = yield(:head)
-  %body
+  %body#fullscreen
     = render :partial => 'shared/navigation'
     - flash.each do |key, value|
       #note{class: "#{key}"}
@@ -18,13 +18,7 @@
     .content.slide
       = yield
       - if Rails.env.development?
-        #dev_console
-          %h4
-            Dev Console
-          = link_to 'Destroy all games', '/nuke_games'
-          = link_to 'Destroy all sessions', '/nuke_sessions'
-          = link_to 'Destroy all players', '/nuke_players'
-          :javascript
-            console.log(#{session.to_json})
+        :javascript
+          console.log(#{session.to_json})
     :javascript
       session = #{session.to_json};

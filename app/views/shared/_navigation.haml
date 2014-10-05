@@ -5,24 +5,23 @@
     %li
     %li
     %li
-  %h1 Pingpong-o-tron
+  %h1 
+    Pingpong-o-tron
 %nav.slide
   %ul
-    %li
-      = nav_link("Leaderboard", players_path)
-    %li
-      = nav_link("Current Game", current_games_path)
+    %li= nav_link("Leaderboard", players_path)
+    %li= nav_link("Current Game", current_games_path)
 
     - if session[:id]
       - unless params[:action] == 'current'
-        %li
-          = nav_link( "Play!", matchmaking_games_path ) 
-      %li
-        = nav_link( "Sign Out", signout_path ) 
+        %li= nav_link( "Play!", matchmaking_games_path ) 
+      %li= nav_link( "Sign Out", signout_path ) 
     - else
-      %li
-        = nav_link("Log In", new_session_path ) 
-      %li
-        = nav_link("Sign Up", root_path )
-      
+      %li= nav_link("Log In", new_session_path ) 
+      %li= nav_link("Sign Up", root_path )
+    - if Rails.env.development? 
+      %li= link_to 'Destroy all games', '/nuke_games'
+      %li= link_to 'Destroy all sessions', '/nuke_sessions'
+      %li= link_to 'Destroy all players', '/nuke_players'
+
 

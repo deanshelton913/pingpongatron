@@ -13,15 +13,16 @@
         Player
       .unit.unit.one-quarter
         Rating
-    .players
+    .players.unit.whole
       - if @players.empty?
         .player
+          .number.unit.one-quarter
           .name.unit.half
-            No players have signed-up yet!
+            No Players
       - @players.each_with_index do |player, index|
         .player{ class: (player.id.to_i == session[:id].to_i ? "current" : '')}
-          .number.unit.one-quarter="#{index+1}."
-          .name.unit.half
+          .name.unit.three-quarters
+            %span= "#{index+1}."
             .image
               %img{ src: player.avatar(:thumb) }
             %span=player.name

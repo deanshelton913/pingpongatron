@@ -2,7 +2,9 @@
 <div id="player_{{id}}" class="player half unit {{serving}} {{controllable}} {{result_class}}">
   <div class="name">{{name}}</div>
   <div class="score">{{score}}</div>
-  <img src="{{{avatar}}}" alt="{{name}}'s avatar"/>
+  <p>
+    <img src="{{{avatar}}}" alt="{{name}}'s avatar"/>
+  </p>
   <div class="stats">
     Rating: {{rating}}<br/>
     Played: {{games_played}}<br/>
