@@ -14,6 +14,10 @@
       .unit.unit.one-quarter
       Rating
     .players
+      - if @players.empty?
+        .player
+          .name.unit.half
+            No players have signed-up yet!
       - @players.each_with_index do |player, index|
         .player{ class: (player.id.to_i == session[:id].to_i ? "current" : '')}
           .number.unit.one-quarter="#{index+1}."
