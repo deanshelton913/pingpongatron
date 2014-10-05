@@ -1,0 +1,30 @@
+#players_index.grid
+  .unit.whole
+    %h2
+      LeaderBoard
+      %span 
+        Pro = Rating > 2400
+        %br
+        Starter = Games Played < 30 
+  #leaderboard
+    .title
+      .unit.one-quarter
+      .unit.half
+        Player
+      .unit.unit.one-quarter
+      Rating
+    .players
+      - @players.each_with_index do |player, index|
+        .player{ class: (player.id.to_i == session[:id].to_i ? "current" : '')}
+          .number.unit.one-quarter="#{index+1}."
+          .name.unit.half
+            .image
+              %img{ src: player.avatar(:thumb) }
+            %span=player.name
+          .rating.unit.one-quarter
+            = player.rating
+            = '(PRO)' if player.pro_rating?
+            = '(STARTER)' if player.starter?
+
+
+

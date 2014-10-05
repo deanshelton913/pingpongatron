@@ -4,8 +4,12 @@
     GameEvents.send('add_player');
   });
 
-.grid
-  .unit.whole
+.grid#matchmaking
+  .unit.half.stack
     %h2
       Matchmaking
-    %p Waiting for opponent
+    %p.notice_me 
+      Waiting for opponent... 
+  .unit.half.body.stack
+    %p Check this out while you wait. :D
+    %img{src:"/brucelee.gif"}

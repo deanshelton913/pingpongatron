@@ -2,10 +2,6 @@ class GamesController < ApplicationController
   include ApplicationHelper
   before_filter :must_be_logged_in, only:[:new, :create]
 
-  def index
-    #leaderboard
-  end
-
   def new
   end
 
@@ -19,7 +15,7 @@ class GamesController < ApplicationController
   def current
     game = Game.in_progress
     if game.nil? 
-      return redirect_to games_path, flash: {warning: "No game in progress currently"}
+      return redirect_to players_path, flash: {warning: "No game in progress currently"}
     end
     @game = game.formatted
   end

@@ -73,16 +73,17 @@ class Game < ActiveRecord::Base
     players << Player.find(player_one_id) if player_one_id
     players << Player.find(player_two_id) if player_two_id
     players.each_with_index do |player, index|
+      number = index==0 ? "one" : "two"
       goobie << {
         id: player.id,
-        score: self.send("player_#{index==0 ? "one" : "two"}_score"),
+        score: self.send("player_#{number}_score"),
         name: player.name,
         avatar: player.avatar,
         rating: player.rating,
         games_played: player.games_played,
         victories: player.victories.count,
         defeats: player.defeats.count,
-        result_class: result_class('one'),
+        result_class: result_class(number),
         pro: player.pro_rating?,
         starter: player.starter?
       }

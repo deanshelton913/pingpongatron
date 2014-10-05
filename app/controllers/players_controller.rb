@@ -1,7 +1,11 @@
 class PlayersController < ApplicationController
 
+  def index
+    @players = Player.order('rating desc')
+  end
+  
   def new
-    return redirect_to games_path if session[:id]
+    return redirect_to players_path if session[:id]
     @player = Player.new
   end
 

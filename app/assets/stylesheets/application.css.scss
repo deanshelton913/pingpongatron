@@ -72,7 +72,7 @@ h1{
 
 h2{
   font-family: montserratregular;
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   padding-bottom: 10px;
   font-size: 1.5em;
   font-weight: bolder;
@@ -281,6 +281,70 @@ label input[type="file"] {
     }
   }
 }
+#matchmaking{
+  .body{
+    text-align:center;
+  }
+
+  .notice_me{
+    color: #000;
+    font-weight: bolder;
+    font-size: 4vw;
+  }
+  img{
+    padding:10px;
+    border: 1px dashed;
+    margin:0 auto;
+  }
+}
+
+#players_index{
+  h2 span{
+    font-size: 11px;
+    display: block;
+    color: #000;
+  }
+  #leaderboard{
+    width:100%;
+    .title {
+      font-family: 'lobster';
+      color: #000;
+      font-size: 5vw;
+    }
+    .player{
+      font-family:'amatic';
+      font-size:5vw;
+      font-weight:bold;
+      color: #000;
+      float:left;
+      width:100%;
+      &:not(:first-child){
+        border-top:3px dashed #000;
+      }
+      &.current{
+        background-color:#fff;
+      }
+      .number{
+        text-align:center;
+      }
+      .name{
+        .image{
+          height: 40px;
+          overflow: hidden;
+          float: left;
+          margin-right: 20px;
+          border: 1px solid #000;
+          img{
+            width:auto;
+            height:100%;
+            float:left;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 #games_leave{
   h2{
@@ -331,21 +395,12 @@ nav a{
 }
 nav li.current a{
   color:#000;
-  position:relative;
-
-  &:after{
-    position:absolute;
-    content:"";
-    border-radius: 50%;
-    width:20px;
-    height:20px;
-    background:#ccc;
-    opacity:0.5;
-    bottom:0;
-    left: 38%;
-  }
 }
 
+header{
+  position:relative;
+  
+}
 //  FONTS
 @font-face {
     font-family: 'lobster';
@@ -547,10 +602,15 @@ nav li.current a{
 .pull-right   { float: right; }
 
 /* Responsive Stuff */
+@media screen and (max-width:567px){
+  .unit.stack{
+    width: 100%;
+  }
+}
 @media screen and (max-width: 568px) {
   /* Stack anything that isn’t full-width on smaller screens */
   .grid .unit {
-    /*width: 100% !important;*/
+    /*width: 100% !important;*/ /*HACK-- versus screen*/
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -585,7 +645,7 @@ nav li.current a{
     top: 0;
     left: 0;
     right: 0;
-    font-size:2em;
+    font-size:1em;
     background: #fde073;
     text-align: center;
     line-height: 2.5;
@@ -600,11 +660,11 @@ nav li.current a{
 }
 @-webkit-keyframes slideDown {
     0%, 100% { -webkit-transform: translateY(-150px); }
-    10%, 90% { -webkit-transform: translateY(0px); }
+    10%, 90% { -webkit-transform: translateY(60px); }
 }
 @-moz-keyframes slideDown {
     0%, 100% { -moz-transform: translateY(-150px); }
-    10%, 90% { -moz-transform: translateY(0px); }
+    10%, 90% { -moz-transform: translateY(60px); }
 }
 .cssanimations.csstransforms #note {
     -webkit-transform: translateY(-150px);

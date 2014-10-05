@@ -10,12 +10,12 @@ class CurrentGameController < WebsocketRails::BaseController
   end
 
   def hello
-    controller_store[:current_game_state] = Game.with_opening || Game.in_progress
     broadcast_game_state_change("Hello!")
   end
 
   def goodbye
     # delete game/remove player
+    # controller_store[:current_game_state].player
     broadcast_game_state_change("Bye!")
   end
 
@@ -28,6 +28,7 @@ class CurrentGameController < WebsocketRails::BaseController
   
   # receivers
   def add_player
+    controller_store[:current_game_state] = Game.with_opening || Game.in_progress
     info = "Still waiting for opponent."
     if controller_store[:current_game_state].nil? # you are player 1
       game = Game.new(player_one_id: message['player_id'])
@@ -75,12 +76,12 @@ class CurrentGameController < WebsocketRails::BaseController
 
   def player_two_wins?
     game = controller_store[:current_game_state]
-    game.player_two_score > 20 && game.player_one_score < (game.player_two_score - 2)
+    game.player_two_score > 20 && game.player_one_score < (game.player_two_score - 1)
   end
 
   def player_one_wins?
     game = controller_store[:current_game_state]
-    game.player_one_score > 20 && game.player_two_score < (game.player_one_score - 2)
+    game.player_one_score > 20 && game.player_two_score < (game.player_one_score - 1)
   end
 
 end

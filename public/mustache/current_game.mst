@@ -8,7 +8,7 @@
     Played: {{games_played}}<br/>
     Victories: {{victories}}<br/>
     Defeats: {{defeats}}<br/>
-    Pro?: {{pro}}<br/>
+    Pro: {{pro}}<br/>
     Starter: {{starter}}<br/>
   </div>
 
