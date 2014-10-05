@@ -17,6 +17,7 @@
   <div class="controls">
     <div class="button plus">+</div>
     <div class="button minus">-</div>
+    <a class="button leave" href="/players">Leaderboard</a>
   </div>
 </div>
 {{/players}}

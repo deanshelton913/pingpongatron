@@ -283,9 +283,30 @@ label input[type="file"] {
         right:0;
         width:30%;
       }
+      .leave{
+        position:absolute;
+        top:10px;
+        right:0;
+        width:30%;
+      }
     }
-    &.controllable .controls{
-      display:block;
+    &.controllable{
+      .controls{
+        display:block;
+      }
+      .leave{
+        display:none;
+      }
+    }
+    &.loser,&.winner{
+      .controls{
+        .plus, .minus{
+          display:none !important;
+        }
+        .leave{
+          display:block !important;
+        }
+      }
     }
   }
 }
@@ -316,11 +337,16 @@ label input[type="file"] {
   #leaderboard{
     width:100%;
     .title {
+      text-align:center;
       font-family: 'lobster';
       color: #000;
       font-size: 5vw;
+      float: left;
+      width: 100%;
+      border-bottom: 3px dashed #000;
     }
     .player{
+      text-align:center;
       font-family:'amatic';
       font-size:5vw;
       font-weight:bold;
@@ -337,19 +363,20 @@ label input[type="file"] {
         text-align:center;
       }
       .name{
-        span{
+        .number{
           float: left;
-          padding: 0 20px;
+          padding: 0;
+          font-size: 1em;
+          margin-right: 10px;
         }
         .image{
-          height: 40px;
+          height: 50px;
           overflow: hidden;
           float: left;
-          margin-right: 20px;
+          margin-right: 5%;
           border: 1px solid #000;
           img{
             width:auto;
-            height:100%;
             float:left;
           }
         }

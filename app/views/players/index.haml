@@ -9,11 +9,11 @@
   #leaderboard
     .title
       .unit.one-quarter
-      .unit.half
         Player
+      .unit.half
       .unit.unit.one-quarter
         Rating
-    .players.unit.whole
+    .players
       - if @players.empty?
         .player
           .number.unit.one-quarter
@@ -22,7 +22,7 @@
       - @players.each_with_index do |player, index|
         .player{ class: (player.id.to_i == session[:id].to_i ? "current" : '')}
           .name.unit.three-quarters
-            %span= "#{index+1}."
+            %span.number= "#{index+1}."
             .image
               %img{ src: player.avatar(:thumb) }
             %span=player.name
