@@ -24,6 +24,7 @@ gem 'paperclip', "~> 4.2"
 gem 'websocket-rails'
 gem 'rails_12factor'
 gem 'exifr', '~> 1.2.0'
+gem 'aws-sdk'
 group :production do
   gem 'pg' #postgres on heroku
 end
