@@ -1,5 +1,5 @@
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -400,7 +400,7 @@ html,body{
 }
 
 .content{
-   padding:0 10px 10px; 
+   padding:0 10px 10px;
   &.slide{
     background-color: aqua;
     padding-top: 0px;
@@ -440,7 +440,7 @@ nav li.current a{
 
 header{
   position:relative;
-  
+
 }
 //  FONTS
 @font-face {
@@ -539,7 +539,7 @@ header{
   right: 0;
   h4{
     margin-top:-10px;
-    padding-bottom:10px;    
+    padding-bottom:10px;
   }
   a{
     margin-bottom: 10px;
@@ -690,7 +690,7 @@ header{
     background: #fde073;
     text-align: center;
     line-height: 2.5;
-    overflow: hidden; 
+    overflow: hidden;
     -webkit-box-shadow: 0 0 5px black;
     -moz-box-shadow:    0 0 5px black;
     box-shadow:         0 0 5px black;

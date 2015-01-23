@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
   def current
     game = Game.in_progress
-    if game.nil? 
+    if game.nil?
       return redirect_to players_path, flash: {warning: "No game in progress currently"}
     end
     @game = game.formatted

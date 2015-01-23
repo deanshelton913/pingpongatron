@@ -39,12 +39,12 @@ class Game < ActiveRecord::Base
   end
 
 
-	# Set the winner. Provide it with a Elo::Player. 
+	# Set the winner. Provide it with a Elo::Player.
   def winner=(player)
     process_result(player == player_one ? 1.0 : 0.0)
   end
 
-	# Set the loser. Provide it with a Elo::Player. 
+	# Set the loser. Provide it with a Elo::Player.
   def loser=(player)
     process_result(player == player_one ? 0.0 : 1.0)
   end
@@ -87,7 +87,7 @@ class Game < ActiveRecord::Base
         pro: player.pro_rating?,
         starter: player.starter?
       }
-    end 
+    end
     {game_id: id, players: goobie, game_point: game_point?}
   end
 
@@ -105,9 +105,9 @@ class Game < ActiveRecord::Base
   def game_point?
     !!([player_one_score, player_two_score].max >= 20)
   end
-  
+
   private
-  
+
 	# Create an Elo::Rating object for player one
   def rating_one
     Elo::Rating.new(:result        => self.result,
@@ -123,5 +123,5 @@ class Game < ActiveRecord::Base
                :other_rating  => player_one.rating,
                :k_factor      => player_two.k_factor)
   end
-  
+
 end

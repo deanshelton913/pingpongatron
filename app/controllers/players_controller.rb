@@ -3,15 +3,16 @@ class PlayersController < ApplicationController
   def index
     @players = Player.order('rating desc')
   end
-  
+
   def new
+    @name = random_awesome_name
     return redirect_to players_path if session[:id]
     @player = Player.new
   end
 
   def create
     player_params['name'].downcase!
-    player = Player.new(player_params) 
+    player = Player.new(player_params)
     if player.save
       session[:id] = player.id
       return redirect_to matchmaking_games_path
@@ -25,5 +26,5 @@ class PlayersController < ApplicationController
 
   def self.must_be_anon
   end
-  
+
 end

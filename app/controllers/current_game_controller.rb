@@ -1,8 +1,8 @@
 class CurrentGameController < WebsocketRails::BaseController
 
   # NOTE:
-  # This file is a bit insane... 
-  # Many of the things here are bad practice... and i know it. :/
+  # This file shit... i know this.
+  # Many of the things here are bad practice... and i know that too. :/
   # This is a hobby project, and my first attempt with web sockets.
 
   def initialize_session
@@ -21,11 +21,11 @@ class CurrentGameController < WebsocketRails::BaseController
 
   # senders
   def broadcast_game_state_change(info=nil)
-    broadcast_message :game_state_change, { info: info, game_state: controller_store[:current_game_state].formatted}
+    broadcast_message :game_state_change, { info: info, game_state: controller_store[:current_game_state].formatted }
     rescue StandardError => e
       trigger_failure e.message
   end
-  
+
   # receivers
   def add_player
     controller_store[:current_game_state] = Game.with_opening || Game.in_progress
@@ -60,7 +60,7 @@ class CurrentGameController < WebsocketRails::BaseController
     if game.player_two_id == message['player_id']
       game.player_two_score += 1
       game.winner = Player.find(message['player_id']) if player_two_wins?
-    end 
+    end
     game.save
     broadcast_game_state_change(info)
   end

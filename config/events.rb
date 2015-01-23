@@ -8,6 +8,7 @@ WebsocketRails::EventMap.describe do
     subscribe :client_disconnected, :to => CurrentGameController, :with_method => :goodbye
     subscribe :add_player, :to => CurrentGameController, :with_method => :add_player
     subscribe :remove_player, :to => CurrentGameController, :with_method => :remove_player
+    subscribe :player_ready, :to => CurrentGameController, :with_method => :player_ready
     subscribe :increment_score, :to => CurrentGameController, :with_method => :increment_score
     subscribe :decrement_score, :to => CurrentGameController, :with_method => :decrement_score
   #

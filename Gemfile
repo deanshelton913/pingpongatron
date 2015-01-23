@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem "haml-rails" 
+gem "haml-rails"
 gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'elo'
@@ -25,6 +25,9 @@ gem 'websocket-rails'
 gem 'rails_12factor'
 gem 'exifr', '~> 1.2.0'
 gem 'aws-sdk'
+gem 'therubyracer'
+gem 'lograge'
+
 group :production do
   gem 'pg' #postgres on heroku
 end
